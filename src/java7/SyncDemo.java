@@ -1,8 +1,10 @@
 package java7;
 
 class MyThread implements Runnable{
-	public static synchronized void printMessage(String name)
+	public static void printMessage(String name)
 	{
+		//we want to use static 
+		synchronized(Object.class) {
 		for(int i=0;i<50;i++) {
 			System.out.println(name);
 			try {
@@ -11,7 +13,7 @@ class MyThread implements Runnable{
 				e.printStackTrace();
 			}
 		}
-		
+		}
 		System.out.println("End of Method");
 	}
 	public void run() {
