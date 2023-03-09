@@ -7,9 +7,13 @@ public class AccountMain {
 		// TODO Auto-generated method stub
 		Account acc=new Account();
 		VolatileAccount accV=new VolatileAccount();
-		Thread t1=new Thread(accV,"Yatin");
-		Thread t2=new Thread(accV,"farhan");
-		Thread t3=new Thread(accV,"ammir");
+		UseOfAtomic accUOA=new UseOfAtomic();
+		Thread t1=new Thread(accUOA,"Yatin");
+		Thread t2=new Thread(accUOA,"farhan");
+		Thread t3=new Thread(accUOA,"ammir");
+//		Thread t1=new Thread(accV,"Yatin");
+//		Thread t2=new Thread(accV,"farhan");
+//		Thread t3=new Thread(accV,"ammir");
 //		Thread t1=new Thread(acc,"Yatin");
 //		Thread t2=new Thread(acc,"farhan");
 //		Thread t3=new Thread(acc,"ammir");
