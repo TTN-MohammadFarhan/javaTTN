@@ -2,23 +2,24 @@ package com.labs;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
 
+	private static List<Department> dept;
+	private static Stream<Map<String, Long>> stream;
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//Q1 :: Find out the sum of salary of all employees. 
 		List<Employee> emp=EmployeeRepository.getEmployees();
-		List<Department> dept=EmployeeRepository.getDepartments();
+		setDept(EmployeeRepository.getDepartments());
 		double sum=emp.stream().collect(Collectors.summingDouble(e->e.getSalary()));
 		System.out.println("-----------answer 1nd question-----------");
 		System.out.println("total salary is "+sum);
@@ -30,7 +31,8 @@ public class Main {
 		//Set<String> dp=dept.stream().map(e->e.getDepartmentName()).collect(Collectors.toSet());
 		Map<String,Long> mp=emp.stream()
 				.filter(e->e.getDepartment()!=null)
-				.collect(Collectors.groupingBy(e->e.getDepartment().getDepartmentName(),TreeMap::new,Collectors.counting()));
+				.collect(Collectors.
+						groupingBy(e->e.getDepartment().getDepartmentName(),TreeMap::new,Collectors.counting()));
 		mp.forEach((department, count) ->
         System.out.println(department + ": " + count));
 		
@@ -69,7 +71,7 @@ public class Main {
        //Q7:: Find departments with highest count of employees.
        System.out.println();
 		System.out.println("-----------answer 7nd question-----------");
-       Stream<Map<String, Long>> stream = Stream.of(mp);
+       setStream(Stream.of(mp));
 
        long max = mp.values().stream().max(Comparator.naturalOrder()).get();
       String departmentName= mp.entrySet().stream()
@@ -87,6 +89,22 @@ public class Main {
 		
 //        mp.forEach(e->{System.out.print});
 		
+	}
+
+	public static List<Department> getDept() {
+		return dept;
+	}
+
+	public static void setDept(List<Department> dept) {
+		Main.dept = dept;
+	}
+
+	public static Stream<Map<String, Long>> getStream() {
+		return stream;
+	}
+
+	public static void setStream(Stream<Map<String, Long>> stream) {
+		Main.stream = stream;
 	}
 
 }

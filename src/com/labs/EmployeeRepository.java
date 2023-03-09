@@ -17,7 +17,7 @@ public class EmployeeRepository {
 		departments.add(new Department(20,"Production",201));
 		departments.add(new Department(30,"Sales",124));
 		departments.add(new Department(40,"Finance",205));
-		departments.add(new Department(50,"Customer Support",100));
+		departments.add(new Department(50,"Customer Support",100)); 
 		//populate employees 
 		employees= new ArrayList<Employee>();
 		employees.add(new Employee( 100, "Steven", "King", 
