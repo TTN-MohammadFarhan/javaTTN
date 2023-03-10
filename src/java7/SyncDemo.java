@@ -1,4 +1,4 @@
-package java7;
+ package java7;
 
 class MyThread implements Runnable{
 	public static void printMessage(String name)
